@@ -1,15 +1,18 @@
 import React, { useCallback } from 'react'
 
-function MyChild({ name, onNameChange }) {
+function MyChild({ count, setCount }) {
 
-  const handleInputChange = useCallback(event => {
-    onNameChange(event.target.value)
-  }, [onNameChange])
+  const increaseCount = ()=>  {
+    setCount(count + 1)
+  }
+  const decreaseCount = ()=>  {
+    setCount(count - 1)
+  }
 
   return (
     <div>
-      <input type="text" onChange={handleInputChange} value={name} />
-      <div>The name is: {name}</div>
+        <button onClick={decreaseCount}>-</button>
+        <button onClick={increaseCount}>+</button>
     </div>
   )
 }
